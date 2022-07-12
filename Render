@@ -1,0 +1,78 @@
+
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local TextLabel_2 = Instance.new("TextLabel")
+local FPS = Instance.new("TextLabel")
+
+
+
+ScreenGui.Parent = game.CoreGui
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+Frame.BorderColor3 = Color3.fromRGB(20, 20, 20)
+Frame.Size = UDim2.new(1, 745, 1, 352)
+
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.Position = UDim2.new(0.184789866, 0, 0.191365227, 0)
+TextLabel.Size = UDim2.new(0, 200, 0, 50)
+TextLabel.Font = Enum.Font.GothamBlack
+TextLabel.Text = "RetainX"
+TextLabel.TextColor3 = Color3.fromRGB(125, 125, 125)
+TextLabel.TextSize = 14.000
+
+TextLabel_2.Parent = Frame
+TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.BackgroundTransparency = 1.000
+TextLabel_2.Position = UDim2.new(0.184789866, 0, 0.264877468, 0)
+TextLabel_2.Size = UDim2.new(0, 200, 0, 50)
+TextLabel_2.Font = Enum.Font.GothamBlack
+TextLabel_2.Text = "Local User"
+TextLabel_2.TextColor3 = Color3.fromRGB(125, 125, 125)
+TextLabel_2.TextSize = 14.000
+
+FPS.Name = "FPS"
+FPS.Parent = Frame
+FPS.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+FPS.BackgroundTransparency = 1.000
+FPS.Position = UDim2.new(0.184789866, 0, 0.133022174, 0)
+FPS.Size = UDim2.new(0, 200, 0, 50)
+FPS.Font = Enum.Font.GothamBlack
+FPS.Text = "12"
+FPS.TextColor3 = Color3.fromRGB(125, 125, 125)
+FPS.TextSize = 14.000
+
+-- Scripts:
+
+local function WPTMIW_fake_script() -- TextLabel_2.LocalScript 
+	local script = Instance.new('LocalScript', TextLabel_2)
+
+	local player = game.Players.LocalPlayer
+	
+	if player then
+		script.Parent.Text = "Welcome, "..player.Name..""
+	end
+	
+end
+coroutine.wrap(WPTMIW_fake_script)()
+local function TNZSGL_fake_script() -- FPS.LocalScript 
+	local script = Instance.new('LocalScript', FPS)
+
+	local RS = game:GetService("RunService")
+	local frames = 0
+	
+	RS.RenderStepped:Connect(function()
+		frames = frames + 1
+	end)
+	
+	while wait(1) do
+		script.Parent.Text = frames .. " FPS"
+		frames = 0
+	end
+	
+end
+coroutine.wrap(TNZSGL_fake_script)()
